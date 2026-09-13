@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="1. 권한 설정 (최초 1회)" android:textStyle="bold" android:textSize="16sp" />
+        <Button android:id="@+id/btnOpenAccessibilitySettings" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="접근성 권한 설정 열기" />
+        <Button android:id="@+id/btnOpenOverlaySettings" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="다른 앱 위에 표시 권한 설정 열기" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"
+            android:layout_marginTop="24dp" android:layout_marginBottom="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="2. 오늘 현황" android:textStyle="bold" android:textSize="16sp" />
+        <TextView android:id="@+id/txtTotalUsage" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="오늘 사용시간: 불러오는 중..." />
+        <TextView android:id="@+id/txtBankRemaining" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="저축 잔액: -" />
+        <TextView android:id="@+id/txtLoanStatus" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="대출 잔액: -" />
+        <TextView android:id="@+id/txtRewardStatus" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="리워드 포인트: -" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"
+            android:layout_marginTop="24dp" android:layout_marginBottom="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="3. 총 사용 한도 설정" android:textStyle="bold" android:textSize="16sp" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" android:textSize="12sp" android:textColor="#666666"
+            android:text="허용 앱(전화/문자 등)을 제외한 모든 앱의 하루 총 사용시간 한도입니다. 넘으면 허용 앱 외 모든 앱이 잠깁니다." />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="하루 총 사용 한도 (분)" />
+        <EditText android:id="@+id/inputTotalDailyLimit" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:inputType="number" android:hint="예: 300 (5시간)" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="그레이스 피리어드 (초, 하루 1회)" />
+        <EditText android:id="@+id/inputGraceSeconds" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:inputType="number" android:hint="예: 120" />
+
+        <Button android:id="@+id/btnSaveLimitSettings" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="한도 저장 (PIN 필요할 수 있음)" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"
+            android:layout_marginTop="24dp" android:layout_marginBottom="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="4. 허용 앱 추가" android:textStyle="bold" android:textSize="16sp" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" android:textSize="12sp" android:textColor="#666666"
+            android:text="전화, 문자 앱은 자동으로 허용됩니다. 그 외에 시간이 다 되어도 계속 쓸 수 있게 할 앱을 추가하세요." />
+        <Spinner android:id="@+id/spinnerInstalledApps" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" />
+        <Button android:id="@+id/btnAddAllowedApp" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="허용 목록에 추가 (PIN 필요할 수 있음)" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:text="허용된 앱 목록" android:textStyle="bold" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerAllowedApps"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"
+            android:layout_marginTop="24dp" android:layout_marginBottom="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="5. 시간 은행 설정" android:textStyle="bold" android:textSize="16sp" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="하루 최대 저축 시간 (분)" />
+        <EditText android:id="@+id/inputMaxBankMinutes" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:inputType="number" android:hint="예: 240" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="하루 최대 인출(사용) 시간 (분)" />
+        <EditText android:id="@+id/inputDailyWithdrawMinutes" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:inputType="number" android:hint="예: 180" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="적립시간 사용 가능 시간대 (시:분)" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <EditText android:id="@+id/inputWindowStartHour" android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" android:inputType="number" android:hint="시작 시" />
+            <EditText android:id="@+id/inputWindowStartMinute" android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" android:inputType="number" android:hint="시작 분" />
+            <EditText android:id="@+id/inputWindowEndHour" android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" android:inputType="number" android:hint="종료 시" />
+            <EditText android:id="@+id/inputWindowEndMinute" android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" android:inputType="number" android:hint="종료 분" />
+        </LinearLayout>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="대출 상환 방식" />
+        <RadioGroup android:id="@+id/radioLoanMode" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/radioPrepay" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="미리쓰기제" android:checked="true" />
+            <RadioButton android:id="@+id/radioDeadline" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="기한제 (7일 내 미상환 시 이자)" />
+        </RadioGroup>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="기한제 이자율 (%)" />
+        <EditText android:id="@+id/inputInterestRate" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:inputType="number" android:hint="예: 20" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="리워드 환전세 (%)" />
+        <EditText android:id="@+id/inputExchangeTax" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:inputType="number" android:hint="예: 10" />
+
+        <Button android:id="@+id/btnSaveBankSettings" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="은행 설정 저장 (PIN 필요할 수 있음)" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"
+            android:layout_marginTop="24dp" android:layout_marginBottom="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="6. 대출" android:textStyle="bold" android:textSize="16sp" />
+        <Button android:id="@+id/btnTakeLoan" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="1시간 대출받기" />
+        <Button android:id="@+id/btnRepayLoan" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="저축 잔액으로 즉시 상환" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"
+            android:layout_marginTop="24dp" android:layout_marginBottom="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="7. 리워드 환전" android:textStyle="bold" android:textSize="16sp" />
+        <EditText android:id="@+id/inputExchangeAmount" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:inputType="number" android:hint="분/포인트 수량" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <Button android:id="@+id/btnTimeToReward" android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="시간→리워드" />
+            <Button android:id="@+id/btnRewardToTime" android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="리워드→시간" />
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDDDDD"
+            android:layout_marginTop="24dp" android:layout_marginBottom="16dp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="8. 설정 잠금 (PIN)" android:textStyle="bold" android:textSize="16sp" />
+        <EditText android:id="@+id/inputNewPin" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:inputType="numberPassword" android:hint="4자리 PIN (비우면 잠금 해제)" />
+        <Button android:id="@+id/btnSetPin" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="PIN 설정/변경" />
+
+    </LinearLayout>
+</ScrollView>
